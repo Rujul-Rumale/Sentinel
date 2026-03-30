@@ -1,0 +1,10 @@
+.env
+*.env
+application-local.properties
+target/
+node_modules/
+frontend/node_modules/
+src/main/resources/application.properties
+.m2/
+*.log
+backend*/

@@ -1,0 +1,17 @@
+import axios from 'axios'
+const BASE = import.meta.env.VITE_API_BASE || 'http://localhost:8080'
+const api = axios.create({baseURL: BASE})
+export const searchPlace = q => api.get('/api/search',{params:{q}})
+export const getLulc = district => api.get('/api/lulc',{params:{district}})
+export const getAir = (lat,lon) => api.get('/api/air',{params:{lat,lon}})
+export const getWeather = (lat,lon) => api.get('/api/weather',{params:{lat,lon}})
+export const getFlights = () => api.get('/api/flights')
+export const getVessels = () => api.get('/api/vessels')
+export const getSatellite = norad => api.get('/api/satellite',{params:{norad}})
+export const getRainfall = () => api.get('/api/rainfall')
+export const getTrain = no => api.get('/api/train',{params:{no}})
+export const getSavedLocations = () => api.get('/api/locations')
+export const saveLocation = loc => api.post('/api/locations', loc)
+export const deleteLocation = id => api.delete(`/api/locations/${id}`)
+export const getHistory = () => api.get('/api/locations/history')
+export const saveHistory = h => api.post('/api/locations/history', h)
