@@ -2,25 +2,20 @@
 FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
 
-# Copy pom.xml and resolve dependencies
-COPY pom.xml .
-RUN mvn dependency:go-offline
-
-# Copy source code and frontend
+# Copy the project and build the executable jar plus bundled frontend assets.
+COPY pom.xml ./
 COPY src ./src
 COPY frontend ./frontend
-
-# Build the application (this will also build the React frontend)
-RUN mvn clean package -DskipTests
+RUN mvn -B dependency:go-offline
+RUN mvn -B clean package -DskipTests \
+    && cp "$(find target -maxdepth 1 -name '*.jar' ! -name '*.original' | head -n 1)" /app/app.jar
 
 # Stage 2: Create the minimal runtime image
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 
-# Copy the built jar file
-COPY --from=build /app/target/sentinel-india-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /app/app.jar ./app.jar
 
 EXPOSE 8080
 
-# Run the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]

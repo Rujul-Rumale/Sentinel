@@ -2,6 +2,7 @@
 *.env
 application-local.properties
 target/
+BOOT-INF/
 node_modules/
 frontend/node_modules/
 .m2/

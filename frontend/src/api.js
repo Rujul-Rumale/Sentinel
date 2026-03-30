@@ -1,5 +1,5 @@
 import axios from 'axios'
-const BASE = import.meta.env.VITE_API_BASE || 'http://localhost:8080'
+const BASE = (import.meta.env.VITE_API_BASE || '').trim()
 const api = axios.create({baseURL: BASE})
 export const searchPlace = q => api.get('/api/search',{params:{q}})
 export const getLulc = district => api.get('/api/lulc',{params:{district}})
