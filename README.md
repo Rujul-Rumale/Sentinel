@@ -193,3 +193,7 @@ The backend stores third-party API responses in MySQL using the `api_cache` tabl
 - `./mvnw clean package -DskipTests` is the canonical production build
 - `frontend/.env` is optional for local frontend-only customization
 - `.env` files are ignored by Git; use `.env.example` as a template instead
+
+---
+
+![Views](https://komarev.com/ghpvc/?username=Rujul-Rumale&repo=Sentinel&label=Views&color=0e75b6)
