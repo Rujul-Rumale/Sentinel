@@ -196,4 +196,4 @@ The backend stores third-party API responses in MySQL using the `api_cache` tabl
 
 ---
 
-![Views](https://komarev.com/ghpvc/?username=Rujul-Rumale&repo=Sentinel&label=Views&color=0e75b6)
+![Views](https://hits.sh/github.com/Rujul-Rumale/Sentinel.svg?style=flat-square&label=views&color=0e75b6&labelColor=555)
